@@ -39,8 +39,8 @@ function Notes() {
 
     const newNote = {
       id: Date.now(),
-      title: title,
-      body: body,
+      title,
+      body,
     }
 
     setNotes([...notes, newNote])
@@ -49,6 +49,10 @@ function Notes() {
       title: '',
       body: '',
     })
+  }
+
+  function handleDelete(id) {
+    setNotes(notes.filter((note) => note.id !== id))
   }
 
   return (
@@ -111,6 +115,7 @@ function Notes() {
 
               <button
                 type="button"
+                onClick={() => handleDelete(note.id)}
                 className="absolute top-4 right-5 cursor-pointer text-[26px] leading-none text-[#949494] hover:text-[#c18585]"
               >
                 ×
